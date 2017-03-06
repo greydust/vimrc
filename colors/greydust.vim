@@ -1,4 +1,4 @@
-" Color setting {
+" Color settings {{{
 	hi SignColumn    ctermfg=White	    ctermbg=black
 	hi FoldColumn    ctermfg=cyan	    ctermbg=black
 	hi Folded        ctermfg=7 ctermbg=4
@@ -10,7 +10,7 @@
 	hi Search         term=reverse  ctermfg=0  ctermbg=3
 	hi MoreMsg        term=bold  cterm=bold  ctermfg=2
 	hi ModeMsg        term=bold  cterm=bold
-	hi LineNr         term=underline  cterm=bold  ctermfg=3
+	hi LineNr         term=underline  cterm=bold  ctermfg=grey
 	hi Question       term=standout  cterm=bold  ctermfg=2
 	hi StatusLine     term=bold,reverse  cterm=bold,reverse
 	hi StatusLineNC   term=reverse  cterm=reverse
@@ -39,5 +39,4 @@
 	hi CursorLine guibg=#dbdbdb gui=none
 	"highlight Pmenu ctermfg=1 ctermbg=4 guibg=grey30
 	hi PmenuSel     ctermfg=1 ctermbg=7 guibg=grey30
-"}
-
+" Color Settings }}}
