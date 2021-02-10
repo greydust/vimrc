@@ -1,42 +1,16 @@
 " greydust's vimrc
 " Forked form vgod's vimrc
-" For pathogen.vim: auto load all plugins in .vim/bundle
 
 " Plugin Settings {{{
 
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin()
 
-Plug 'https://github.com/Houl/vim-repmo.git'
-
-Plug 'https://github.com/majutsushi/tagbar.git'
-
-Plug 'https://github.com/ludovicchabant/vim-gutentags.git'
+"Plug 'https://github.com/shawncplus/phpcomplete.vim.git'
+"Plug 'zxqfl/tabnine-vim'
+"Plug 'https://github.com/Houl/vim-repmo.git'
 
 call plug#end()
-
-" Repmo {{{
-" map a motion and its reverse motion:
-noremap <expr> h repmo#Key('h', 'l')|sunmap h
-noremap <expr> l repmo#Key('l', 'h')|sunmap l
-
-" if you like `:noremap j gj', you can keep that:
-noremap <expr> j repmo#Key('gj', 'gk')|sunmap j
-noremap <expr> k repmo#Key('gk', 'gj')|sunmap k
-
-" repeat the last [count]motion or the last zap-key:
-noremap <expr> ; repmo#LastKey(';')|sunmap ;
-noremap <expr> , repmo#LastRevKey(',')|sunmap ,
-" Repmo }}}
-
-" Gutentags {{{
-
-let g:gutentags_cache_dir = '~/.vim/gutentags'
-
-" Gutentags }}}
-
-" Mixerbox related
-call mixerbox#initialize()
 
 " Plugin Settings }}}
 
@@ -48,13 +22,11 @@ set history=50		" keep 50 lines of command line history
 set ruler			" show the cursor position all the time
 set autoread		" auto read when file is changed from outside
 
-
 filetype off			" necessary to make ftdetect work on Linux
 syntax on
 filetype on				" Enable filetype detection
 filetype indent on		" Enable filetype-specific indenting
 filetype plugin on		" Enable filetype-specific plugins
-
 
 " auto reload vimrc when editing it
 autocmd! bufwritepost .vimrc source ~/.vimrc
@@ -87,7 +59,6 @@ set autoindent		" auto indentation
 set incsearch		" incremental search
 set nobackup		" no *~ backup files
 set copyindent		" copy the previous indentation on autoindenting
-set ignorecase		" ignore case when searching
 set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
 set smarttab		" insert tabs on the start of a line according to context
 
@@ -97,7 +68,7 @@ set novisualbell
 set t_vb=
 set tm=500
 
-set foldmethod=marker
+set foldmethod=syntax
 set number
 
 "Restore cursor to file position in previous editing session
@@ -106,7 +77,8 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 
 " Enable omni completion. (Ctrl-X Ctrl-O)
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS ts=2 sts=2 sw=2
+autocmd FileType proto setlocal omnifunc=protocomplete#Complete ts=2 sts=2 sw=2
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -131,7 +103,7 @@ set cot-=preview "disable doc preview in omnicomplete
 " General Settings }}}
 
 " Tab Settings {{{
-set noexpandtab
+"set noexpandtab
 set tabstop=4
 set shiftwidth=4
 
@@ -183,3 +155,6 @@ fun! Big5()
 	set fileencoding=big5
 endfun
 " Encoding Settings }}}
+
+set exrc
+set secure
